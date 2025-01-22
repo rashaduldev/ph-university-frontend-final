@@ -1,35 +1,33 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../component/layout/MainLayout";
-import About from "../pages/About";
 import { routeGenerator } from "../utils/routesGenerator";
 import { adminRoutes } from "./Admin.routes";
 import { facultyRoutes } from "./faculty.routes";
 import { studentsRoutes } from "./student.routes";
+import Login from "../pages/login/Login";
+import App from "../App";
 
 export const router= createBrowserRouter([
     {
         path: "/",
-        element: <MainLayout/>,
-        children:[
-            {
-                path: "about",
-                element: <About/>, 
-            },
-        ]
+        element: <App/>,
       },
       {
+        path: "/login",
+        element: <Login/>, 
+    },
+      {
         path: "/admin",
-        element: <MainLayout/>,
+        element: <App/>,
         children:routeGenerator(adminRoutes)
       },
       {
         path: "/faculty",
-        element: <MainLayout/>,
+        element: <App/>,
         children:routeGenerator(facultyRoutes)
       },
       {
         path: "/student",
-        element: <MainLayout/>,
+        element: <App/>,
         children:routeGenerator(studentsRoutes)
       },
 ])
